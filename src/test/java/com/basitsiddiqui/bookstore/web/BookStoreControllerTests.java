@@ -44,7 +44,7 @@ public class BookStoreControllerTests {
                 .extract()
                 .jsonPath();
 
-        assertThat(jsonPath.getList("books")).hasSize(3);
+        assertThat(jsonPath.getList("books")).hasSize(4);
         assertThat(jsonPath.getLong("books[0].id")).isEqualTo(1L);
         assertThat(jsonPath.getLong("books[1].id")).isEqualTo(2L);
         assertThat(jsonPath.getLong("books[2].id")).isEqualTo(3L);
