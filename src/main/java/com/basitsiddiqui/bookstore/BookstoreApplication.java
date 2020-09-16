@@ -3,6 +3,7 @@ package com.basitsiddiqui.bookstore;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
@@ -15,17 +16,13 @@ public class BookstoreApplication {
 
 	@GetMapping("/")
 	public String welcome(){
-		return "<H1>Welcome!</H1>";
+		return "<H1>Welcome Stranger!</H1>";
 	}
 
-	@GetMapping("/Raj")
-	public String welcomeRaj(){
-		return "<H1>Welcome Raj!</H1>";
+	@GetMapping("/{name}")
+	public String welcome(@PathVariable String name){
+		return "<H1>Welcome " + name + "!</H1>";
 	}
 
-	@GetMapping("/Pranav")
-	public String welcomePranav(){
-		return "<H1>Welcome Pranav!</H1>";
-	}
 
 }
