@@ -22,11 +22,13 @@ public class BookstoreController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/books")
-    public List<BookEntity> getBooks(){
-        return Arrays.asList(
+    public BookResult getBooks(){
+        return new BookResult(
+                Arrays.asList(
                 new BookEntity(1, 10, "Spead Reading", "Tony Buzan", "978-1406644296", BookCategory.PRODUCTIVITY ),
                 new BookEntity(2, 20, "Mind Mapping", "Tony Buzan", "978-1406644266", BookCategory.PRODUCTIVITY ),
                 new BookEntity(3, 23, "Brief History of Time", "Stephen Hawkings", "978-0593060506", BookCategory.SCIENCE)
+                )
         );
     }
 }
