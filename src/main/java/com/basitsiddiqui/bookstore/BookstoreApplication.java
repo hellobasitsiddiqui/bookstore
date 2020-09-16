@@ -18,4 +18,14 @@ public class BookstoreApplication {
 		return "<H1>Welcome!</H1>";
 	}
 
+	@GetMapping("/Raj")
+	public String welcomeRaj(){
+		return "<H1>Welcome Raj!</H1>";
+	}
+
+	@GetMapping("/Pranav")
+	public String welcomePranav(){
+		return "<H1>Welcome Pranav!</H1>";
+	}
+
 }
