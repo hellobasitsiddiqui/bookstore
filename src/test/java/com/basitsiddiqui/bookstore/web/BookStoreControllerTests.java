@@ -34,7 +34,6 @@ public class BookStoreControllerTests {
 
     @Test
     void shouldFindAllBooks() {
-
         JsonPath jsonPath = given()
                 .when()
                 .accept(ContentType.JSON)
@@ -48,5 +47,44 @@ public class BookStoreControllerTests {
         assertThat(jsonPath.getLong("books[0].id")).isEqualTo(1L);
         assertThat(jsonPath.getLong("books[1].id")).isEqualTo(2L);
         assertThat(jsonPath.getLong("books[2].id")).isEqualTo(3L);
+    }
+
+    @Test
+    void shouldFindBookByValidId() {
+        JsonPath jsonPath = given()
+                .when()
+                .accept(ContentType.JSON)
+                .get("/books/1")
+                .then()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .jsonPath();
+
+        assertThat(jsonPath.getList("books")).hasSize(1);
+        assertThat(jsonPath.getLong("books[0].id")).isEqualTo(1L);
+    }
+
+    @Test
+    void shouldFindNoResultsWhenBookNotPresent() {
+        JsonPath jsonPath = given()
+                .when()
+                .accept(ContentType.JSON)
+                .get("/books/10")
+                .then()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .jsonPath();
+
+        assertThat(jsonPath.getList("books")).hasSize(0);
+    }
+
+    @Test
+    void shouldThrowExceptionFindNoResultsWhenBookNotPresent() {
+         given()
+        .when()
+        .accept(ContentType.JSON)
+        .get("/books/1l0")
+        .then()
+        .statusCode(HttpStatus.SC_BAD_REQUEST);
     }
 }
