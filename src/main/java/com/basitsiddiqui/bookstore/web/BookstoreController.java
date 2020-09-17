@@ -21,7 +21,7 @@ public class BookstoreController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/")
     public String welcome(){
-        return "<H1>Welcome to our Bookstore!</H1>";
+        return "<H1>AWS for JAVA Developers!!!</H1>";
     }
 
     @ResponseStatus(HttpStatus.OK)
