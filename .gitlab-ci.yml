@@ -25,3 +25,5 @@ run:
   script:
     - mvn package
     - mvn exec:java -Dexec.mainClass="com.basitsiddiqui.bookstore.BookstoreApplication"
+    - curl http://localhost:5000/actuator/health
+    - curl http://localhost:8080/bookstore/books
