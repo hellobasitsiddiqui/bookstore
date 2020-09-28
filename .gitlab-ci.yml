@@ -19,4 +19,4 @@ run:
   stage: run
   script:
     - mvn package
-    - mvn exec:java -Dexec.mainClass=" com.basitsiddiqui.bookstore.BookstoreApplication"
+    - mvn exec:java -Dexec.mainClass="com.basitsiddiqui.bookstore.BookstoreApplication"
